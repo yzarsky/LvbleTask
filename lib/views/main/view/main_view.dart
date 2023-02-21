@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:frontend_home_assignment/views/main/logic/main_view_actions.dart';
+import 'package:frontend_home_assignment/views/main/widgets/loading_widget.dart';
 import 'package:frontend_home_assignment/views/main/widgets/main_action_button_widget.dart';
 import 'package:frontend_home_assignment/views/main/widgets/payment_plan_widget.dart';
 import 'package:frontend_home_assignment/views/main/widgets/payments_plan_date_widget.dart';
@@ -248,7 +249,7 @@ class _MainViewState extends State<MainView> {
                                 ),
                               ),
                               Container(
-                                  margin: const EdgeInsets.only(top: 91),
+                                  margin: const EdgeInsets.only(top: 91, right: 35, left: 35),
                                   child: MainActionButtonWidget(
                                       onPressed: _selectedPlan != null? () =>
                                           widget.mainViewActions.splitRent(context, _selectedPlan!) : null))
@@ -262,17 +263,7 @@ class _MainViewState extends State<MainView> {
               ),
             ),
             if (_showLoading) ...[
-              const Center(
-                child: SizedBox(
-                  width: 50,
-                  height: 50,
-                  child: Center(
-                    child: CircularProgressIndicator(
-                      backgroundColor: Color(0xff2EC790),
-                    ),
-                  ),
-                ),
-              )
+              const LoadingWidget(),
             ]
           ],
         ),
